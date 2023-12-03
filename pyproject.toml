@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "minutes-generator"
+version = "0.1.0"
+description = ""
+authors = ["takumi5757 <takumi5757@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.101.1"
+openai = "^0.27.8"
+numpy = "^1.25.2"
+uvicorn = "^0.23.2"
+python-multipart = "^0.0.6"
+langchain = "^0.0.265"
+tiktoken = "^0.4.0"
+ffmpeg-python = "^0.2.0"
+pandas = "^2.0.3"
+hypercorn = "^0.14.4"
+google-cloud-secret-manager = "^2.16.4"
+google-api-python-client = "^2.100.0"
+google-auth-httplib2 = "^0.1.1"
+google-auth-oauthlib = "^1.1.0"
+google-cloud-storage = "^2.11.0"
+google-cloud-firestore = "^2.12.0"
+torch = "^2.0.1"
+torchvision = "^0.15.2"
+torchaudio = "^2.0.2"
+google-cloud-pubsub = "^2.18.4"
+
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+tox = "^4.11.3"
+pytest = "^7.4.2"
+httpx = "^0.25.0"
+torch = {version = "^2.0.1+cpu", source = "torch_cpu"}
+torchvision = {version = "^0.15.2+cpu", source = "torch_cpu"}
+torchaudio = {version = "^2.0.2+cpu", source = "torch_cpu"}
+
+
+[[tool.poetry.source]]
+name = "torch_cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
