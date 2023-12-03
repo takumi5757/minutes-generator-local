@@ -128,12 +128,11 @@ async def execute_summarize(
     logger.info(f"total costs map: {total_costs}")
     logger.info(f"response_messages: {response_messages}")
 
-    # doc_summaries: str = ms.to_numbered_list_str(response_messages)
     doc_summaries: list = response_messages
 
     output = dict()
 
-    # だってTPM制限に当たるんだもん（ブチギレ）
+    # TPM制限に当たらないように1分待つ
     time.sleep(60)
 
     def get_simple_summary(doc_summaries: list):
@@ -294,8 +293,6 @@ async def execute_summarize(
         raise ValueError(
             f"Request to slack returned an error {response.status_code}, the response is:\n{response.text}"
         )
-
-    # return JSONResponse(content=output)
 
     # 成功したことをステータスコード200で返す
     return JSONResponse(content=output, status_code=200)

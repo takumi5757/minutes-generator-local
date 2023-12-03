@@ -1,54 +1,30 @@
-# minutes generator
+# minutes-generator-local
 
-## Run Web API
-### Local
+## What's this
+音声ファイルからその文字起こしと要約をするAPIの実装
 
-### setup
-```
-poetry init
-poetry install
-direnv allow
-```
+[chatGPTとwhisperで音声要約APIを作ってみた](https://zenn.dev/hoge/hoge)
 
-```sh
-$ sh run.sh
-```
-
-```sh
-$ poetry run uvicorn app.main:app --reload --host 0.0.0.0 --port 9000
-```
-
-### Docker Compose
+## Setup
 
 ```sh
 $ docker-compose up --build
 ```
 
-## Request Commands
+## How to use
 
 ```sh
 curl --request GET --url http://0.0.0.0:9000/healthz
 ```
 
-```sh
-curl --request POST --url http://0.0.0.0:9000/api/v1/summarize -H "Content-Type: multipart/form-data" -F "upload_file=@/home/sato/works/play_ground/takumi_saito/minutes_generator/sample/sampleTokyo.wav" | jq
+```
+curl --request POST --url http://0.0.0.0:9000/api/v1/summarize -H "Content-Type: multipart/form-data" -F "upload_file=@/hoge/fuga.wav" | jq
 ```
 
+## Input limits
+- 対応するファイルの最大長は4時間
+- 対応しているファイル形式： [.mp4, .mp3, .wav, .m4a]
 
-## Development
-### Run Tests and Linter
+## Reference
 
-```
-$ poetry run tox
-```
-
-
-### How to use
-```
-curl --request POST --url http://0.0.0.0:9000/api/v1/summarize -H "Content-Type: multipart/form-data" -F "upload_file=@/home/sato/works/play_ground/takumi_saito/minutes_generator/sample/sampleTokyo.wav" | jq
-```
-
-メモ
-torch install
-!poetry source add torch_cpu --priority=explicit https://download.pytorch.org/whl/cpu
-!poetry add torch torchvision torchaudio --source torch_cpu
+- [機械学習の推論WebAPIの実装をテンプレート化して使い回せるようした](https://zenn.dev/yag_ays/articles/eef1a8c8e1ee39)
