@@ -116,14 +116,19 @@ class MinutesSummarizer:
     # MODEL = "gpt-3.5-turbo-16k"
     # CHUNK_SIZE = 8000
     # MAX_TOKENS = 15000
-    # max_tokensはcompletionのみで計算されているっぽい
+    # max_tokensはcompletionのみで計算されていそう
     # you requested 19483 tokens (4483 in the messages, 15000 in the completion)
     MODEL = "gpt-4-0613"
     CHUNK_SIZE = 4000
     MAX_TOKENS = 7500
 
+    # MODEL = "gpt-4-1106-preview"
+    # CHUNK_SIZE = 16000
+    # MAX_TOKENS = 120000
+
     chunk_overlap = 100
     COST_DICT = {
+        "gpt-4-1106-preview": {"input": 0.01, "output": 0.03},
         "gpt-4-0613": {"input": 0.03, "output": 0.06},
         "gpt-3.5-turbo-16k": {"input": 0.003, "output": 0.004},
     }

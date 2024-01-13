@@ -7,6 +7,15 @@
 
 ## Setup
 
+OPENAIのAPIキーと、SlackのWebhook URLを.envに記載する
+
+```
+cp .env.example .env
+```
+
+.envを編集して、
+
+
 ```sh
 $ docker-compose up --build
 ```
@@ -14,7 +23,7 @@ $ docker-compose up --build
 ## How to use
 
 ```sh
-curl --request GET --url http://0.0.0.0:9000/healthz
+curl --request GET --url http://0.0.0.0:9000/heartbeat
 ```
 
 ```

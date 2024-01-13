@@ -1,6 +1,7 @@
 version: "3.3"
 services:
   mg-api:
+    platform: linux/amd64
     container_name: mg-api
     build:
       context: .
